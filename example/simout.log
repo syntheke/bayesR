@@ -1,0 +1,20 @@
+Program BayesR
+      Run started at 2014-11-21 14:00:54
+Prefix for input files       : Data/plink
+Prefix for output files      : out/simout
+Phenotype column             =        1
+No. of loci                  =    10031
+No. of individuals           =     2326
+No. of training individuals  =     2326
+Prior Vara                   =   0.010000 -2.000000
+Prior Vare                   =   0.010000 -2.000000
+Model size                   =        0
+No. of cycles                =    10000
+Burnin                       =     5000
+Thinning rate                =       10
+No. of mixtures              =        4
+Variance of dist             =    0.00000   0.00010   0.00100   0.01000
+Dirichlet prior              =    1.00000   1.00000   1.00000   1.00000
+Seed                         =      333
+SNP output                   =        0
+        Run ended at 2014-11-21 14:05:40
