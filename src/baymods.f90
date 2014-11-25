@@ -95,8 +95,8 @@ contains
   subroutine init_register
     nopt =22
     call alloc_register
-    call include_option(1, '-bfile'  ,'[prefix]',  'prefix PLINK binary files'               ,a_char,     'non ')
-    call include_option(2, '-out'    ,'[prefix]',  'prefix for output'                       ,a_char,     ' ')
+    call include_option(1, '-bfile'  ,'[prefix]',  'prefix PLINK binary files'               ,a_char,     '')
+    call include_option(2, '-out'    ,'[prefix]',  'prefix for output'                       ,a_char,     '')
     call include_option(3, '-n'      ,'[num]',     'phenotype column'                        ,a_int,      '1')
     call include_option(4, '-vara'   ,'[num]',     'SNP variance prior'                      ,a_float, '0.01')
     call include_option(5, '-vare'   ,'[num]',     'error variance prior'                    ,a_float, '0.01')
@@ -114,9 +114,9 @@ contains
     call include_option(17,'-predict','[flag]',    'perform prediction'                      ,a_flag,     'f')
     call include_option(18,'-snpout' ,'[flag]',    'output detailed SNP info'                ,a_flag,     'f')
     call include_option(19,'-permute','[flag]',     'permute order of SNP'                    ,a_flag,   'f')
-    call include_option(20,'-model'  ,'[filename]','model summary file (for prediction) '    ,a_char,   ' ')
-    call include_option(21,'-freq'   ,'[filename]','SNP frequency file (for prediction)'     ,a_char,   ' ')
-    call include_option(22,'-param'  ,'[filename]','SNP effect file (for prediction)'        ,a_char,   ' ')
+    call include_option(20,'-model'  ,'[filename]','model summary file (for prediction) '    ,a_char,   '')
+    call include_option(21,'-freq'   ,'[filename]','SNP frequency file (for prediction)'     ,a_char,   '')
+    call include_option(22,'-param'  ,'[filename]','SNP effect file (for prediction)'        ,a_char,   '')
  end subroutine init_register
 
  subroutine include_option(pos,key,argtype,desc,kind,default)
@@ -501,12 +501,11 @@ implicit none
 contains
 
 subroutine get_size()
-  integer:: idum
   character(len=3) :: cdum
   nind=0
   open(35,file=trim(phenfil),status='old',form='formatted')
   do 
-     read(35,*,iostat=ios) idum,cdum
+     read(35,*,iostat=ios) cdum
      if (ios.ne.0) exit
      nind=nind+1
   enddo
@@ -731,9 +730,8 @@ subroutine permutate(p,n)
 end subroutine permutate
 
 subroutine compute_dgv
-  integer :: i, tr, mu
+  integer :: i, tr
   tr=0
-  mu=mu_vare_store(1)
   pred=-9999.0d0
   do i=1,nind
      if(trains(i)==0) then

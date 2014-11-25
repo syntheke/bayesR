@@ -38,7 +38,6 @@ call xcenter
 call parse_priors
 call init_random_seed
 if(mcmc) then
-   
    open(unit=21,file=logfil,status='unknown',form='formatted')
    write(21,901) 'Program BayesR'
    write(21,908) 'Run started at',cdate(1:4),cdate(5:6),cdate(7:8),ctime(1:2),ctime(3:4),ctime(5:6)
@@ -220,7 +219,6 @@ if(mcmc) then
          scale=(dble(included)*sum(g**2) + vara_ap*dfvara)/(dfvara+dble(included))
          vara=rand_scaled_inverse_chi_square(dble(included)+dfvara,scale)
          gp=gpin*vara
-
          vare=(dot_product(yadj,yadj)+vare_ap*dfvare)/ (nnind+dfvare)
          vare=rand_scaled_inverse_chi_square(nnind+dfvare,vare)
       endif
@@ -264,6 +262,7 @@ if(mcmc) then
       indiststore(i,:)=indiststore(i,:)/counter 
    enddo
    call output_model
+   mu=mu_vare_store(1)
    call compute_dgv
    call write_dgv
 else   ! end mcmc 
