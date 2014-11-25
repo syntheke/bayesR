@@ -1,0 +1,4 @@
+# Ignore FORTRAN compile files
+src/*.mod
+src/bayesR
+src/#*#
