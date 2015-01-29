@@ -680,9 +680,13 @@ subroutine xcenter()
      close(45,status='keep')
      do j=1,nloci
         q=freqstore(j)
-        xtemp=X(:,j)
-        where (xtemp >2.0d0) xtemp=2.0d0*q
-        X(:,j)=(xtemp-2.0d0*q)/sqrt(2.0d0*q*(1.0d0-q))
+        if(q==1.0d0 .or. q==0.0d0) then
+           X(:,j)=0.0d0
+        else
+           xtemp=X(:,j)
+           where (xtemp >2.0d0) xtemp=2.0d0*q
+           X(:,j)=(xtemp-2.0d0*q)/sqrt(2.0d0*q*(1.0d0-q))
+        endif
      enddo
   endif
 end subroutine xcenter
