@@ -292,4 +292,5 @@ close(21)
 906 format(a,t30,'= ',2f10.6)
 907 format(a,t30,'= ',f10.2,a)
 908 format(a20,1x,a4,'-',a2,'-',a2,' ',a2,':',a2':',a2)
+909 format(a,t30,'= ',l)
 end program bayesR
