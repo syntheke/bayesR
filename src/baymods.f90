@@ -236,39 +236,48 @@ contains
   end function is_numeric
 
   subroutine update_register
-    integer ::  i, k
+    integer ::  i, k, kind
     character(len=1024) :: key
+    character(len=100) :: err1, err2
     logical :: valid
 
-    do i=1,narg
+    err1='Unknown command line option : '
+    err2='Missing argumnet for :'
+
+    i=1
+    do while (i.le.narg)
        key=trim(cmd_line(i))
-       if(is_key(key).and..not.is_numeric(key)) then
-          valid=.false.
-          do k=1,nopt
-             if(str_match(key,trim(register%key(k)))) then
-                if(register%kind(k)==4) then
-                   register%default(k)='t'
-                   valid=.true.
-                   exit
-                end if
-                if(is_key(trim(cmd_line(i+1)))) then
-                   if (i==narg) then
-                      print *, 'No value for ',trim(key), '  specified'
-                      stop
-                   else if(.not.is_numeric(trim(cmd_line(i+1)))) then
-                      print *, 'No ',trim(key), '  specified'
-                      stop
-                   end if
-                end if
+       k=1
+       valid=.false.
+       do while(k.le.nopt) 
+          if(str_match(key,trim(register%key(k)))) then
+             kind=register%kind(k)
+             valid=.true.
+             if(kind==4) then
+                register%default(k)='t'
+                i=i+1
+             else if(i==narg) then
+                print *, trim(err2),trim(key),i
+                stop('ERROR: Problem parsing the command line arguments')
+                valid=.false.
+             else if(is_key(trim(cmd_line(i+1)))) then
+                print *, trim(err2),trim(key),i
+                stop('ERROR: Problem parsing the command line arguments')
+             else 
                 register%default(k)=trim(cmd_line(i+1))
                 valid=.true.
-                exit
-             end if
-          end do
-          if(.not.valid )print *, 'Unknown key ',trim(key),' ignored'
+                i=i+2
+             endif
+             exit
+          end if
+          k=k+1
+          valid=.false.
+       enddo
+       if(.not.valid) then
+          print *, trim(err1),trim(key),i
+          stop('ERROR: Problem parsing the command line arguments')
        end if
-    end do
-    
+    enddo
   end subroutine update_register
 
   subroutine parse_help
