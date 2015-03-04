@@ -242,7 +242,7 @@ contains
     logical :: valid
 
     err1='Unknown command line option : '
-    err2='Missing argumnet for :'
+    err2='Missing argument for :'
 
     i=1
     do while (i.le.narg)
