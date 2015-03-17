@@ -33,10 +33,8 @@ call parse
 call get_size
 call load_phenos_plink
 call allocate_data
-call load_snp_binary
-call xcenter 
 call parse_priors
-call init_random_seed
+
 if(mcmc) then
    open(unit=21,file=logfil,status='unknown',form='formatted')
    write(21,901) 'Program BayesR'
@@ -59,7 +57,13 @@ if(mcmc) then
    write(21,903) 'Seed ', seed1
    write(21,903) 'SNP output ', snpout
    call flush(21)
+endif
 
+call load_snp_binary
+call xcenter 
+call init_random_seed
+
+if(mcmc) then
    nnind=dble(nt)
    if(snpout) then
       open(unit=14,file=locfil,status='unknown',action='write')

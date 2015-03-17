@@ -592,29 +592,29 @@ open (unit=41,file=trim(genfil),status='old',access='stream',form='unformatted')
 read(41)b1           !plink magic number 1
 if (.not.btest(b1,0).and..not.btest(b1,1).and.btest(b1,2).and.btest(b1,3).and.&
 & .not.btest(b1,4).and.btest(b1,5).and.btest(b1,6).and..not.btest(b1,7)) then
-   write(21,'(a50)') 'Plink magic number 1 - ok'
+   write(21,'(a)') 'Plink magic number 1 - ok'
 else
    write(*,*)  'Binary genotype file may not be a plink file'
-   write(21,'(a50)') 'Binary genotype file may not be a plink file'
+   write(21,'(a)') 'Binary genotype file may not be a plink file'
    call flush(21)
 end if
 
 read(41)b1           !plink magic number 2
 if (btest(b1,0).and.btest(b1,1).and..not.btest(b1,2).and.btest(b1,3).and.&
 & btest(b1,4).and..not.btest(b1,5).and..not.btest(b1,6).and..not.btest(b1,7)) then
-   write(21,'(a50)') 'Plink magic number 2 - ok'
+   write(21,'(a)') 'Plink magic number 2 - ok'
 else
    write(*,*)  'Binary genotype file may not be a plink file'
-   write(21,'(a50)') 'Binary genotype file may not be a plink file'
+   write(21,'(a)') 'Binary genotype file may not be a plink file'
    call flush(21)
 end if
 
 read(41)b1           !mode 
 if (btest(b1,0)) then
-  write(21,'(a50)') 'SNP-major mode for PLINK .bed file'
+  write(21,'(a)') 'SNP-major mode for PLINK .bed file'
 else
-  write(*,'(a50)') 'should not be individual mode - check >>>'
-  write(21,'(a50)') 'SNP file should not be in individual mode'
+  write(*,'(a)') 'should not be individual mode - check >>>'
+  write(21,'(a)') 'SNP file should not be in individual mode'
   call flush(21)
 end if
 
@@ -661,7 +661,7 @@ subroutine xcenter()
   !RESCALE DESIGN MATRIX SO THAT GENOTYPES ARE CHANGED FROM BEING CODED
   !AS 0,1,2 TO BEING CODED AS DEVIATIONS FROM ZERO
   integer :: j, nomiss
-  double precision :: q
+  double precision :: q, qtest
   double precision, dimension(nt) :: xtemp
   if(mcmc) then
      do j=1,nloci
@@ -693,7 +693,9 @@ subroutine xcenter()
            X(:,j)=0.0d0
         else
            xtemp=X(:,j)
-           where (xtemp >2.0d0) xtemp=2.0d0*q
+           nomiss=count(xtemp < 3)
+           qtest=dble(sum(xtemp,mask= xtemp < 3)) / (2.0d0*nomiss)
+           where (xtemp >2.0d0) xtemp=2.0d0*qtest
            X(:,j)=(xtemp-2.0d0*q)/sqrt(2.0d0*q*(1.0d0-q))
         endif
      enddo
