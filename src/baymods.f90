@@ -647,7 +647,7 @@ subroutine init_random_seed()
      do i=1,n
         seed(i)=abs(seed1)+(i-1)
      enddo
-     write(21,'(a50,i8)') 'New seeds generated from seed1 ',seed1
+     write(21,'(a,i8)') 'New seeds generated from seed1 ',seed1
   else
      write(21,*)  'new seeds generated from clock'
      call system_clock(count=clock)
