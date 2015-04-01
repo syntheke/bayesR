@@ -22,7 +22,7 @@ gfortran -o bayesR RandomDistributions.f90 baymods.f90 bayesR.f90
 The example is from the [14th QTL-MAS workshop](http://jay.up.poznan.pl/qtlmas2010/index.html).
 The simdata file in the example folder.
 ```sh
-bayesR -bfile simdata -out simout -numit 10000 -burnin 5000 -seed 333
+bayesR -bfile example/simdata -out simout -numit 10000 -burnin 5000 -seed 333
 ```
 
 #### Help:
