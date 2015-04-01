@@ -258,11 +258,11 @@ contains
                 i=i+1
              else if(i==narg) then
                 print *, trim(err2),trim(key),i
-                stop('ERROR: Problem parsing the command line arguments')
+                stop 'ERROR: Problem parsing the command line arguments'
                 valid=.false.
              else if(is_key(trim(cmd_line(i+1)))) then
                 print *, trim(err2),trim(key),i
-                stop('ERROR: Problem parsing the command line arguments')
+                stop 'ERROR: Problem parsing the command line arguments'
              else 
                 register%default(k)=trim(cmd_line(i+1))
                 valid=.true.
@@ -275,7 +275,7 @@ contains
        enddo
        if(.not.valid) then
           print *, trim(err1),trim(key),i
-          stop('ERROR: Problem parsing the command line arguments')
+          stop 'ERROR: Problem parsing the command line arguments'
        end if
     enddo
   end subroutine update_register
