@@ -55,7 +55,7 @@ if(mcmc) then
    write(21,905) 'Variance of dist ', gpin
    write(21,905) 'Dirichlet prior', delta
    write(21,903) 'Seed ', seed1
-   write(21,903) 'SNP output ', snpout
+   write(21,909) 'SNP output ', snpout
    call flush(21)
 endif
 
