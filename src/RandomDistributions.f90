@@ -43,7 +43,7 @@ contains
        c=mean
     else
        call random_number(temp)
-       r=(-2.0d0*log(temp(1)))**0.5
+       r=(-2.0d0*log(temp(1)))**0.5d0
        theta = 2.0d0*PI*temp(2)
        c= mean+stdev*r*sin(theta)
     end if
@@ -79,10 +79,10 @@ contains
 !
     if (shape >= 1.0d0) then
        d = shape - 1.0d0/3.0d0
-       c = 1.0d0/(9.0d0*d)**0.5
+       c = 1.0d0/(9.0d0*d)**0.5d0
        do while (.true.)
           x = rand_normal(0.0d0, 1.0d0)
-          v = 1.0 + c*x
+          v = 1.0d0 + c*x
           do while (v <= 0.0d0)
              x = rand_normal(0.0d0, 1.0d0)
              v = 1.0d0 + c*x
@@ -140,7 +140,7 @@ contains
         write(*,*) "Scale parameter must be positive"
      end if
      call random_number(temp)
-     ans= scale * (-log(temp))**(1.0 / shape)
+     ans= scale * (-log(temp))**(1.0d0 / shape)
    end function rand_weibull
 !
 !## return a random sample from a Cauchy distribution
@@ -151,7 +151,7 @@ contains
         write(*,*) "Scale parameter must be positive"
      end if
      call random_number(p)
-     ans = median + scale*tan(PI*(p - 0.5))
+     ans = median + scale*tan(PI*(p - 0.5d0))
    end function rand_cauchy
 !
 !## return a random sample from a Student t distribution
@@ -179,9 +179,9 @@ contains
      end if
      call random_number(u)
      if (u < 0.5d0) then
-        ans = mean + scale*log(2.0*u)
+        ans = mean + scale*log(2.0d0*u)
      else
-        ans = mean - scale*log(2*(1-u))
+        ans = mean - scale*log(2.0d0*(1.0d0-u))
      end if
    end function rand_laplace
 !
