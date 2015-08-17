@@ -1,7 +1,7 @@
 Program BayesR
-      Run started at 2014-11-21 14:00:54
-Prefix for input files       : Data/plink
-Prefix for output files      : out/simout
+      Run started at 2015-08-17 10:00:36
+Prefix for input files       : simdata
+Prefix for output files      : simout
 Phenotype column             =        1
 No. of loci                  =    10031
 No. of individuals           =     2326
@@ -16,5 +16,9 @@ No. of mixtures              =        4
 Variance of dist             =    0.00000   0.00010   0.00100   0.01000
 Dirichlet prior              =    1.00000   1.00000   1.00000   1.00000
 Seed                         =      333
-SNP output                   =        0
-        Run ended at 2014-11-21 14:05:40
+SNP output                   =  F
+Plink magic number 1 - ok
+Plink magic number 2 - ok
+SNP-major mode for PLINK .bed file
+New seeds generated from seed1      333
+        Run ended at 2015-08-17 10:13:16
