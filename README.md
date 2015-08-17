@@ -36,5 +36,12 @@ bayesR –help
 [BayesRmanual-0.75.pdf](https://github.com/syntheke/bayesR/blob/master/doc/BayesRmanual-0.75.pdf?raw=true)
 
 #### New:
-A more efficient implementation of the BayesR model for larger data sets is provided in the software bayesRv2. Source code to be released soon. For details see: [fast(er)BayesR.pdf](https://github.com/syntheke/bayesR/blob/master/doc/fast(er)BayesR.pdf?raw=true)
+A more efficient implementation of the BayesR model for larger data sets is provided in the software bayesRv2. For details see: [fast(er)BayesR.pdf](https://github.com/syntheke/bayesR/blob/master/doc/fast(er)BayesR.pdf?raw=true). The binary was 
+
+#### Compile:
+
+in the src folder
+```sh
+ifort -O3 -static -openmp -o bayesRv2 RandomDistributions.f90 baymodsv2.f90 bayesRv2.f90
+```
 
