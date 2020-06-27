@@ -694,9 +694,13 @@ subroutine xcenter()
         else
            xtemp=X(:,j)
            nomiss=count(xtemp < 3)
-           qtest=dble(sum(xtemp,mask= xtemp < 3)) / (2.0d0*nomiss)
-           where (xtemp >2.0d0) xtemp=2.0d0*qtest
-           X(:,j)=(xtemp-2.0d0*q)/sqrt(2.0d0*q*(1.0d0-q))
+            if(nomiss==0) then
+               X(:,j)=0.0d0
+            else
+               qtest=dble(sum(xtemp,mask= xtemp < 3)) / (2.0d0*nomiss)
+               where (xtemp >2.0d0) xtemp=2.0d0*qtest
+               X(:,j)=(xtemp-2.0d0*q)/sqrt(2.0d0*q*(1.0d0-q))
+            endif
         endif
      enddo
   endif
