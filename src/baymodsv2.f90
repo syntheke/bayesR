@@ -703,11 +703,15 @@ contains
           else
              xtemp=X(:,j)
              nomiss=count(xtemp < 3)
-             qtest=dble(sum(xtemp,mask= xtemp < 3)) / (2.0d0*nomiss)
-             geno_mean(0,j)=(0.0d0-mean)/stdev
-             geno_mean(1,j)=(1.0d0-mean)/stdev
-             geno_mean(2,j)=(2.d0-mean)/stdev
-             geno_mean(3,j)=(2.0d0*qtest-mean)/stdev
+             if(nomiss==0) then
+                geno_mean(0:3,j}=0.0d0
+             else
+              qtest=dble(sum(xtemp,mask= xtemp < 3)) / (2.0d0*nomiss)
+              geno_mean(0,j)=(0.0d0-mean)/stdev
+              geno_mean(1,j)=(1.0d0-mean)/stdev
+              geno_mean(2,j)=(2.d0-mean)/stdev
+              geno_mean(3,j)=(2.0d0*qtest-mean)/stdev
+           endif
           end if
        end do
     endif
