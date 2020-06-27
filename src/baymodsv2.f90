@@ -704,7 +704,7 @@ contains
              xtemp=X(:,j)
              nomiss=count(xtemp < 3)
              if(nomiss==0) then
-                geno_mean(0:3,j}=0.0d0
+                geno_mean(0:3,j)=0.0d0
              else
               qtest=dble(sum(xtemp,mask= xtemp < 3)) / (2.0d0*nomiss)
               geno_mean(0,j)=(0.0d0-mean)/stdev
