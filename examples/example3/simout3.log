@@ -1,0 +1,28 @@
+Program BayesR
+Run started at 2021-04-01 12:15:38
+Prefix for input files           : simdata2
+Prefix for output files          : simout3
+Phenotype column                 =        2
+No. of loci                      =    10031
+No. of individuals               =     2326
+No. of training individuals      =     2326
+SNP model file                   : mod3
+Variance model file              : var3
+Prior Vara 
+   1  0.1000000E-22  0.4000000E+01
+   2  0.1000000E-22  0.4000000E+01
+Segment model file               : seg
+Prior segements (No. of mixtures, Variance of dist, Dirichlet prior)
+       1       2   0.00000   0.02500   1.00000   1.00000
+       2       4   0.00000   0.00010   0.00100   0.01000   1.00000   1.00000   1.00000   1.00000
+Prior Vare                       =   0.010000 -2.000000
+No. of cycles                    =    10000
+Burnin                           =     5000
+Thinning rate                    =       10
+Seed                             =      333
+SNP output                       =  F
+New seeds generated from seed1      333
+Plink magic number 1 - ok
+Plink magic number 2 - ok
+SNP-major mode for PLINK .bed file
+Run ended at 2021-04-01 12:17:43

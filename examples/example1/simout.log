@@ -1,0 +1,23 @@
+Program BayesR
+Run started at 2021-04-01 11:58:42
+Prefix for input files           : simdata
+Prefix for output files          : simout
+Phenotype column                 =        1
+No. of loci                      =    10031
+No. of individuals               =     2326
+No. of training individuals      =     2326
+Prior Vara                       =   0.010000 -2.000000
+No. of mixtures                  =        4
+Variance of dist                 =    0.00000   0.00010   0.00100   0.01000
+Dirichlet prior                  =    1.00000   1.00000   1.00000   1.00000
+Prior Vare                       =   0.010000 -2.000000
+No. of cycles                    =    10000
+Burnin                           =     5000
+Thinning rate                    =       10
+Seed                             =      333
+SNP output                       =  F
+New seeds generated from seed1      333
+Plink magic number 1 - ok
+Plink magic number 2 - ok
+SNP-major mode for PLINK .bed file
+Run ended at 2021-04-01 12:00:35
