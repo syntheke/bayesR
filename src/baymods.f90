@@ -1766,11 +1766,6 @@ double precision, dimension(0:3) :: igen
 double precision :: val
 igen(0)=0.0d0; igen(1)=3.0d0;igen(2)=1.0d0;igen(3)=2.0d0
 
-allocate(X(nt,nloci),stat=ios)
-if( ios /= 0 )then
-   stop 'Unable to allocate required storage for data'
-endif
-
  open (unit=41,file=trim(genfil),status='old',access='stream',form='unformatted')
  read(41)b1           !plink magic number 1
  if (.not.btest(b1,0).and..not.btest(b1,1).and.btest(b1,2).and.btest(b1,3).and.&
@@ -1870,7 +1865,7 @@ subroutine xcenter()
   else
      open(45,file=trim(freqfil),status='unknown')
       do j=1,nloci
-        read(45,'(E15.7)') freqstore(j)
+        gread(45,'(E15.7)') freqstore(j)
      enddo
      close(45,status='keep')
      do j=1,nloci
@@ -1914,7 +1909,7 @@ subroutine allocate_data
      where(trains==3) trains=1
   end if
   nt=count(trains==0)
-  allocate(pred(nind), dirx(ndist), g(nloci), yadj(nt), snpindist(nloci,mxdist), &
+  allocate(X(nt,nloci),pred(nind), dirx(ndist), g(nloci), yadj(nt), snpindist(nloci,mxdist), &
        gstore(nloci), indiststore(nloci,ndist), freqstore(nloci), xpx(nloci), &
        snptracker(nloci,3), stat=ios)
   if( ios /= 0 )then
@@ -2157,7 +2152,7 @@ subroutine output_model
         endif
         ci=adjustl(ci)
         ca="Pk"//trim(ci)
-        write(12,800), ca,segments_s%p(i,j)
+        write(12,800) ca,segments_s%p(i,j)
      end do
   end do
   do i=1,nseg
