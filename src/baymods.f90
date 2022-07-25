@@ -1865,7 +1865,7 @@ subroutine xcenter()
   else
      open(45,file=trim(freqfil),status='unknown')
       do j=1,nloci
-        gread(45,'(E15.7)') freqstore(j)
+        read(45,'(E15.7)') freqstore(j)
      enddo
      close(45,status='keep')
      do j=1,nloci
