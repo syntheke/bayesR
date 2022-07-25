@@ -11,7 +11,7 @@ Various new features and improvements:
 * further reduced memory requirements 
 * inclusion of covariates
 * grouped effects models to fit more complex models (e.g. partioning of variance)
-* flat input files
+* flat input files (not supported in bayesRv2)
 * fitted values
 * prediction of phenotypes
 * unified source code
