@@ -31,10 +31,10 @@ git clone https://github.com/syntheke/bayesR.git
 
 in the src folder
 ```sh
-gfortran –o bayesR –O2 -cpp RandomDistributions.f90 baymods.f90 bayesR.f90
-gfortran –o bayesRv2 –O2 -cpp –Dblock –fopenmp RandomDistributions.f90 baymods.f90 bayesR.f90
-ifort –o bayesR –O3 -fpp RandomDistributions.f90 baymods.f90 bayesR.f90
-ifort –o bayesRv2 –O3 -fpp –Dblock –openmp –static RandomDistributions.f90 baymods.f90 bayesR.f90
+gfortran -o bayesR -O2 -cpp RandomDistributions.f90 baymods.f90 bayesR.f90
+gfortran -o bayesRv2 -O2 -cpp –Dblock -fopenmp RandomDistributions.f90 baymods.f90 bayesR.f90
+ifort -o bayesR -O3 -fpp RandomDistributions.f90 baymods.f90 bayesR.f90
+ifort -o bayesRv2 -O3 -fpp -Dblock -openmp -static RandomDistributions.f90 baymods.f90 bayesR.f90
 ```
 
 #### Run:
@@ -50,18 +50,18 @@ bayesR -bfile example/simdata -out simout -numit 10000 -burnin 5000 -seed 333
 ##### Example2
 Genome position specific priors
 ```sh
-bayesR –bfile simdata2 –out simout2 –numit 10000 –burnin 5000 –seed 333 -n 2 -snpmodel mod2 -segment seg
+bayesR -bfile simdata2 -out simout2 -numit 10000 -burnin 5000 -seed 333 -n 2 -snpmodel mod2 -segment seg
 ```
 ##### Example3
 Grouped effects with mixture priors
 ```sh
-bayesR –bfile simdata2 –out simout3 –numit 10000 –burnin 5000 –seed 333 -n 2 -snpmodel mod3 -segments seg -varcomp var3
+bayesR -bfile simdata2 -out simout3 -numit 10000 -burnin 5000 -seed 333 -n 2 -snpmodel mod3 -segments seg -varcomp var3
 ```
 
 #### Help:
 
 ```sh
-bayesR –help
+bayesR -help
 ```
 
 #### Tell me more:
