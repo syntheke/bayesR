@@ -32,7 +32,7 @@ git clone https://github.com/syntheke/bayesR.git
 in the src folder
 ```sh
 gfortran -o bayesR -O2 -cpp RandomDistributions.f90 baymods.f90 bayesR.f90
-gfortran -o bayesRv2 -O2 -cpp –Dblock -fopenmp RandomDistributions.f90 baymods.f90 bayesR.f90
+gfortran -o bayesRv2 -O2 -cpp -Dblock -fopenmp RandomDistributions.f90 baymods.f90 bayesR.f90
 ifort -o bayesR -O3 -fpp RandomDistributions.f90 baymods.f90 bayesR.f90
 ifort -o bayesRv2 -O3 -fpp -Dblock -openmp -static RandomDistributions.f90 baymods.f90 bayesR.f90
 ```
