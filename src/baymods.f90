@@ -319,7 +319,8 @@ contains
     character(len=*) :: key
     character(len=2),parameter :: str='-'
     is_key=.false.
-    if(str_match(trim(key(1:1)),str)) is_key=.true.
+    !if(str_match(trim(key(1:1)),str)) is_key=.true.
+    if(str_match(trim(key(1:1)),str) .and..not. is_numeric(trim(key(2:2)))) is_key=.true.
   end function is_key
 
   logical function is_numeric(key)
